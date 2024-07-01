@@ -10,5 +10,9 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
+  ],
+  "csp": {
+    "default-src": "'none'",
+    "font-src": "'self' https://fonts.googleapis.com"
+  }
 }

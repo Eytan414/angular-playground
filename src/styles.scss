@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+@use './default-theme.scss/' as theme;
+
+@include mat.core();
+
+$primary: mat.define-palette(theme.$blau, 700);
+$accent: mat.define-palette(theme.$grana, 700);
+$warn: mat.define-palette(mat.$red-palette, A700);
+
+$custom-scrollbar-width: 0.25rem;
+$custom-scrollbar-thumb-color: #333;
+$custom-scrollbar-track-color: transparent;
+
+$theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+      'scrollbar': (
+        'width': $custom-scrollbar-width,
+        'thumb-color': $custom-scrollbar-thumb-color,
+        'track-color': $custom-scrollbar-track-color
+      ),
+      // Set your background color here
+      'background': (
+        'primary': 'black',
+        'accent': mat.get-color-from-palette(mat.define-palette(theme.$grana, 500))
+      )
+    )
+  )
+);
+
+@include mat.all-component-themes($theme);
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue";
+}
+mat-toolbar{
+  background-color: mat-color(accent);
+  p{
+    color: mat-color(primary);
+  }
+}
+*{
+  scrollbar-width: thin;
+scrollbar-color: cadetblue transparent;
+}
+
+* ::-webkit-scrollbar-thumb{
+  width: .125rem;
+
+}
+* ::-webkit-scrollbar-button{
+  display: none;
+}
