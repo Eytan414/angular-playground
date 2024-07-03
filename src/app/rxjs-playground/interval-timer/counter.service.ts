@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, timer, take, concatMap, interval, EMPTY } from 'rxjs';
+import { Observable, timer, take, concatMap, interval, EMPTY, mergeMap } from 'rxjs';
 import { createArray } from '../../shared/utils/utils';
 
 @Injectable({
@@ -11,13 +11,13 @@ export class CounterService {
     if(type === 'timer'){
       return timer(0, 1000).pipe(
         take(inputValue),
-        concatMap(createArray)
+        mergeMap(createArray)
       )
     }
     if(type === 'interval'){    
       return interval(200).pipe(
         take(inputValue),
-        concatMap(createArray)
+        mergeMap(createArray)
       )
     }
     return EMPTY;
