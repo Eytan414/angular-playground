@@ -19,5 +19,5 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
 export class TodosComponent {
   private controller = inject(TodosService);
 
-  todos$:Observable<Todo[]> = this.controller.todos$;
+  todos$:Observable<Todo[]> = this.controller.getTodos();
 }

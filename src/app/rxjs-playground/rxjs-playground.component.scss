@@ -29,20 +29,15 @@ main{
             .container{
                 display: flex;
                 gap: 2rem;
+                user-select: none;
             }
         }
         &.fetch{
-            > .mat-expansion-panel-content{
-                flex-direction: column-reverse !important;
-                .mat-action-row{
-                    justify-content: flex-start;
-                }
-            }            
+            .mat-action-row{
+                justify-content: flex-start;
+            }
         }
         
-        &.click-event{
-            user-select: none;
-        }
     }
 }
 

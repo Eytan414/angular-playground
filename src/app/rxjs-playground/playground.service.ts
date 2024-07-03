@@ -24,7 +24,6 @@ export class PlaygroundService {
     return {x: event.clientX, y: event.clientY, index};
   }
   setClickEventActive():void{
-    debugger;
     this.isClickEventActive.next(true);
   }
   getPointerEvents(isClickEventActive:boolean):Observable<PointerEvent>{//hot obs

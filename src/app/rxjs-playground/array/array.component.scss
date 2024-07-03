@@ -1,6 +1,9 @@
 .container{
     --column-count:10;
     --color: #000;
+    
+    user-select: none;
+
     .actions{
         display: flex;
         gap: 1rem;
