@@ -1,0 +1,16 @@
+mat-paginator .mat-mdc-paginator-container {
+    width: initial;
+}
+.quotes{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(5rem, 10rem));
+    gap: 1rem;
+    justify-content: center;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+          
+.back{
+    cursor: pointer;
+}

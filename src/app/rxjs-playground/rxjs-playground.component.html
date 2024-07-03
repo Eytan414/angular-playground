@@ -2,37 +2,17 @@
     <a href="/">
         <mat-icon>arrow_back</mat-icon>
     </a>
-
-    <p>rxjs-playground works! //TONOTDO:theme fixed !</p>
+    <p>rxjs-playground works!</p>
 </mat-toolbar>
 <main>
     <cdk-accordion class="accordion">
+
         <mat-expansion-panel class="array" color="accent">
             <mat-expansion-panel-header>
                 <mat-panel-title><h2>Array</h2></mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="actions">
-                <mat-label color="warn">columns:
-                    <mat-slider min="4" max="16" step="1" discrete color="primary">
-                        <input matSliderThumb value="10" (valueChange)="columnSliderChange($event)">
-                    </mat-slider>
-                </mat-label>
-                <mat-form-field>
-                    <mat-label>Background: {{arrayColor$ | async}}</mat-label>
-                    <input matInput type='color' 
-                        [formControl]="arrayColorInput">
-                  </mat-form-field>
-            </div>
-
-            <div class="result">
-                @for (number of (randomNumbers$ | async); track number) {
-                    <div class="wrapper">
-                        <div> {{number}} </div>
-                    </div>
-                }
-            </div>
+            <array></array>
         </mat-expansion-panel>
-        
         <mat-divider></mat-divider>
 
         <mat-expansion-panel class="fetch">
@@ -40,7 +20,7 @@
                 <mat-panel-title><h2 >Fetch (promise)</h2></mat-panel-title>
             </mat-expansion-panel-header>
             @if(radio$ | async; as radio) {
-                <ng-container >
+                <ng-container>
                     <mat-action-row>
                         <mat-radio-group (change)="radioChanged($event.value)" 
                             [value]="radio" color="primary">
@@ -49,113 +29,34 @@
                         </mat-radio-group>
                     </mat-action-row>
 
-                    <div class="result">
-                        @if(radio === "todos"){
-                            @for (todo of todos$ | async; track todo.id) {
-                                <div class='todo' [class]="{'completed': todo.completed}"> 
-                                    @if(todo.completed){
-                                        <mat-icon fontIcon="check"></mat-icon>
-                                        <mat-divider></mat-divider>
-                                    }
-                                    <span>{{todo.title}} </span>
-                                </div>
-                            }
-                        } @else {
-                            @if(showBack){
-                                <mat-icon class='back' (click)="backToAllAuthors()" fontIcon="arrow_back"></mat-icon>
-                            }
-                            <mat-form-field class='costumized-select' [style.paddingLeft.rem]="1.5">
-                                <mat-label>Select author</mat-label>
-                                <mat-select (selectionChange)="getAllFromAuthor($event.value)" 
-                                    [formControl]="authorSelectControl" name="author"
-                                    panelClass="costumized-select">
-                                        @for (author of authors; track author) {
-                                            <mat-option [value]="author">{{author}}</mat-option>
-                                        }
-                                </mat-select>
-                              </mat-form-field>
-                            <div class='quotes'>
-                            @for (q of (quotes$ | async); track q.id) {
-                                <div class='quote'> 
-                                    <div class="quote-head" (click)="getAllFromAuthor(q.author)">
-                                        <small>{{q.id}} |</small>
-                                        <strong> {{q.author}}</strong>
-                                    </div>
-                                    <div class="quote-body">{{q.quote}} </div>
-                                </div>
-                            }
-                            </div>
-                            @if(!showBack){
-                                <mat-paginator [length]="allQuotesCount | async" (page)="paginatorChange($event)"
-                                    [pageSize]="(pageParams$ | async)?.pageSize"
-                                    [pageSizeOptions]="[10, 20, 50, 100]">
-                                </mat-paginator>
-                            }
+                    @if(radio === "todos"){
+                        <todos></todos>
+                    } @else {
+                        <quotes [style.width.%]="100"></quotes>                   
                     }
-                    </div>
                 </ng-container>                    
             }
         </mat-expansion-panel>
-        
-        
         <mat-divider></mat-divider>
-        
+
         <mat-expansion-panel class="interval">
             <mat-expansion-panel-header>
                 <mat-panel-title> <h2 >rxjs interval</h2></mat-panel-title>
                 <mat-panel-description> rxjs timer </mat-panel-description>
             </mat-expansion-panel-header>
-            <div class="container">
-                <div [style.width.%]="50">
-                    <form [formGroup]="intervalForm" (ngSubmit)="intervalSubmit()">
-                        <input maxlength="3" size="6" type="number" formControlName="count" placeholder="interval" />
-
-                        <button type="submit" [disabled]="intervalForm.invalid">Submit</button>
-                    </form>
-                    <div class="result">
-                        @for (count of (intervalCounter$ | async); track count) {
-                            <div class="interval counter-item">{{count}} </div>
-                        }
-                    </div>
-                </div>
-                <div [style.width.%]="50">
-                    <form [formGroup]="timerForm" (ngSubmit)="timerSubmit()">
-                        <input maxlength="3" size="6" type="number" formControlName="count" placeholder="Timer" />
-
-                        <button type="submit" [disabled]="timerForm.invalid">Submit</button>
-                    </form>
-                    <div class="result">
-                        @for (count of (timerCounter$ | async); track count) {
-                            <div class="counter-item">{{count}} </div>
-                        }
-                    </div>
-                </div>
-            
+            <div class="container">                
+                <interval-timer type="interval"></interval-timer>
+                <interval-timer type="timer"></interval-timer>
             </div>
-
-        
         </mat-expansion-panel>
-
         <mat-divider></mat-divider>
-
-        <mat-expansion-panel class="click-event" (click)='recordClicks()'>
+        <mat-expansion-panel class="click-event">
             <mat-expansion-panel-header>
                 <mat-panel-title> <h2>click event</h2></mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="result">
-                @for (click of (clicks$ | async); track click) {
-                    <div class="click-data" [ngStyle]="{'anchor-name': '--anchor-'+ $index}">
-                        <div class='index' [ngStyle]="{'position-anchor': '--anchor-'+ $index}">
-                            {{ click.index-1 }}
-                        </div>                          
-                        <div> {{'x:' + click.x + '  y:' + click.y}} </div>
-                    </div>
-                }
-            </div>
+            <clicks></clicks>
         </mat-expansion-panel>
-        
         <mat-divider></mat-divider>        
-
     </cdk-accordion>
 
 </main>

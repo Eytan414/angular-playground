@@ -1,0 +1,24 @@
+@if(showBack){
+    <mat-icon class='back' (click)="backToAllAuthors()" fontIcon="arrow_back"></mat-icon>
+}
+<mat-form-field class='costumized-select' [style.paddingLeft.rem]="1.5">
+    <mat-label>Select author</mat-label>
+    <mat-select (selectionChange)="getAllFromAuthor($event.value)" 
+        [formControl]="authorSelectControl" name="author"
+        panelClass="costumized-select">
+            @for (author of authors; track author) {
+                <mat-option [value]="author">{{author}}</mat-option>
+            }
+    </mat-select>
+</mat-form-field>
+<div class='quotes'>
+    @for (q of (quotes$ | async); track q.id) {
+        <quote-card [quote]="q" (authorChanged)="getAllFromAuthor"></quote-card>
+    }
+</div>
+@if(!showBack){
+    <mat-paginator [length]="allQuotesCount | async" (page)="paginatorChange($event)"
+        [pageSize]="(pageParams$ | async)?.pageSize"
+        [pageSizeOptions]="[10, 20, 50, 100]">
+    </mat-paginator>
+}

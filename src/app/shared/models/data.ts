@@ -1,5 +1,3 @@
-import { PageParams } from "./pageParams";
-
 export const authors: string[] = [
   'Abdul Kalam',
   'Abdus Salam',

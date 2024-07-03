@@ -1,0 +1,25 @@
+.container{
+    --column-count:10;
+    --color: #000;
+    .actions{
+        display: flex;
+        gap: 1rem;
+    }
+    .result{
+        display: grid;
+        grid-template-columns: repeat(var(--column-count), 1fr);
+        overflow: auto;
+        gap: 1rem;
+
+        .wrapper{
+            background-color: var(--color);
+            border-radius: .25rem;
+            
+            div{
+                padding: 1rem;
+                text-align: center;
+                mix-blend-mode: difference;
+            }
+        }
+    }
+}

@@ -1,0 +1,5 @@
+<div class="todos">    
+    @for (todo of todos$ | async; track todo.id) {
+        <todo-item [todo]="todo"></todo-item>
+    }
+</div>

@@ -1,0 +1,51 @@
+.mat-content {
+    gap: 5rem;
+}
+
+form{
+    display: flex;
+    gap: 1rem;
+
+    input, button{
+        outline: 0; 
+        border: 0;
+        border-radius: .75rem;
+        font-size: 1.2rem;
+        padding: .5rem 1rem;
+    }
+    input{
+        text-align: center;
+        width: 6ch;
+    }
+    button{
+        background-color: #a50044;
+        color: #00246a;
+        font-weight: bold;
+        cursor: pointer;
+        
+        &:disabled{
+            cursor: auto;
+            opacity: .3;
+        }
+    }
+
+}
+.result{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(4rem, 6rem)); 
+    gap: 1rem;
+    padding: 1rem;
+    max-height: 55vh;
+    overflow: hidden auto;
+
+    .counter-item{
+        text-align: center;
+        background-color: chocolate;
+        padding: 1.5rem .25rem;
+        border-radius: 50%;
+        
+        &.interval{
+            background-color: blueviolet;
+        }
+    }
+}

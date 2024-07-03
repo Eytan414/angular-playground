@@ -1,0 +1,7 @@
+<div class='todo' [class]="{'completed': todo().completed}"> 
+    @if(todo().completed){
+        <mat-icon fontIcon="check"></mat-icon>
+        <mat-divider></mat-divider>
+    }
+    <span>{{todo().title}} </span>
+</div>

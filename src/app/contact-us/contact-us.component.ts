@@ -5,13 +5,14 @@ import { ControllerService } from '../services/controller.service';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
-import {map, tap } from 'rxjs/operators';
 import { Todo } from '../shared/models/todo';
-import { Observable, lastValueFrom } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
 import { TitleService } from '../services/title.service';
+import { tap } from 'rxjs/internal/operators/tap';
 
 @Component({
-  selector: 'app-contact-us',
+  selector: 'contact-us',
   standalone: true,
   imports: [ReactiveFormsModule, MatIconModule,AsyncPipe,MatToolbarModule],
   templateUrl: './contact-us.component.html',

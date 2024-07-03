@@ -1,0 +1,10 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <input maxlength="3" size="6" type="number" formControlName="count" [placeholder]="type()" />
+
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+</form>
+<div class="result">
+    @for (count of (counter$ | async); track count) {
+        <div class="counter-item" [class]="type()">{{count}} </div>
+    }
+</div>

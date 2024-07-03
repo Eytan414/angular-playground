@@ -1,0 +1,19 @@
+.todo{
+    background-color: darkmagenta;
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    display: flex;
+    gap: .375rem;
+
+    mat-divider{
+        border: 1px solid lightgreen;
+    }
+    mat-icon{
+        vertical-align: middle;
+        color: lightgreen;
+        background: darkgreen;
+        border-radius: 50%;
+        padding: .125rem;
+        font-weight: bold;
+    }
+}

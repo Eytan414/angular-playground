@@ -1,0 +1,35 @@
+.result{
+    user-select: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 12rem)); 
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 1rem;
+    max-height: 75vh;
+    overflow-y: auto;
+
+    .click-data{
+        font-size: 1.5rem;
+        text-align: center;
+        text-transform: capitalize;
+        background-color: lightseagreen;
+        padding: 1.75rem;
+        border-radius: 50%;
+        width: min-content;
+
+        .index{
+            position: absolute;
+            align-self: anchor-center;
+            right: anchor(left);
+            transform: translateX(.125rem);
+            font-size: 0.8rem;
+            color: mediumvioletred;
+            font-weight: bold;
+            background: cyan;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            padding: 0.175rem;
+            padding-left: .35rem;
+        }
+    }
+}

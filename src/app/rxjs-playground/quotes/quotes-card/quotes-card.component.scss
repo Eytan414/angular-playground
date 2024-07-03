@@ -1,0 +1,29 @@
+.quote{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    vertical-align: middle;
+    color: cornsilk;
+    background: repeating-linear-gradient(15deg, darkblue, blue 40px);
+    border-radius: 1rem;
+    padding-bottom: 1rem;
+    
+
+    .quote-head{
+        background-color: lightskyblue;
+        width: 100%;
+        border-radius: 1rem 1rem 0 0;
+        padding-block: 0.5rem;
+        text-align: center;
+        color: navy;
+        cursor: pointer;
+
+        &:hover{
+            mix-blend-mode: luminosity;
+        }
+    }
+    .quote-body{
+        text-align: center;
+        padding: .375rem;
+    }
+}

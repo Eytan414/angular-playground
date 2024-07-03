@@ -1,0 +1,21 @@
+<div class="container" [style]="{'--column-count': columnCount() }">
+    <div class="actions">
+        <mat-label color="warn">columns:
+            <mat-slider min="4" max="16" step="1" discrete color="primary">
+                <input matSliderThumb value="10" (valueChange)="columnCount.set($event)">
+            </mat-slider>
+        </mat-label>
+        <mat-form-field>
+            <mat-label>Background: {{colorInput.value}}</mat-label>
+            <input matInput type='color' [formControl]="colorInput">
+        </mat-form-field>
+    </div>
+
+    <div class="result">
+        @for (number of (randomNumbers$ | async); track number) {
+            <div class="wrapper" [style.backgroundColor]="colorInput.value">
+                <div> {{number}} </div>
+            </div>
+        }
+    </div>
+</div>
