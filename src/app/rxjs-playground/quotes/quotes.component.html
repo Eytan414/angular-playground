@@ -13,7 +13,7 @@
 </mat-form-field>
 <div class='quotes'>
     @for (q of (quotes$ | async); track q.id) {
-        <quote-card [quote]="q" (authorChanged)="getAllFromAuthor"></quote-card>
+        <quote-card [quote]="q" (authorChanged)="getAllFromAuthor(q.author)"></quote-card>
     }
 </div>
 @if(!showBack){
