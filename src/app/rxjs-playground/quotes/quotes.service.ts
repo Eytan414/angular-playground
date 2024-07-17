@@ -37,6 +37,7 @@ export class QuotesService {
       :
       this.backend.getQuoteByPage(pageSize, skip).pipe(
         tap( (q:QuotesResponse) => this.allQuotesCount.next(q.total) ),
+        tap(console.log),
         map( (q:QuotesResponse) => q.quotes )
       )
   }

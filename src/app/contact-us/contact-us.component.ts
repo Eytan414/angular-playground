@@ -9,8 +9,6 @@ import { Todo } from '../shared/models/todo';
 import { Observable } from 'rxjs/internal/Observable';
 import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
 import { TitleService } from '../services/title.service';
-import { tap } from 'rxjs/internal/operators/tap';
-
 @Component({
   selector: 'contact-us',
   standalone: true,
@@ -27,8 +25,8 @@ export class ContactUsComponent implements OnInit{
   
   form = this.fb.group({
     name: ['', Validators.required],
-    age: ['', Validators.required],
-    email: [''],
+    age: ['', [Validators.required, Validators.pattern("^[0-9]*$"),]],
+    email: ['', Validators.email],
     phone: [''],
     message: ['', Validators.required]
   });
@@ -38,24 +36,20 @@ export class ContactUsComponent implements OnInit{
 
   ngOnInit(): void { 
     this.titleService.setTitle("New Title");
-    this.products$ = this.controller.getProducts().pipe(
-      tap(p => console.log(p))
-      )
   }
-
   submit(){    
     let resp$ = this.controller.submit(this.form.value);
     lastValueFrom(resp$).then(
       data => console.log(data)
       );    
   }
-
+  
   toggleMinimize(){
     this.minimized = !this.minimized;
   }
   dataBtnClicked(){
     const offset = Math.floor(Math.random() * 3) - 1;// -1 to 1
-    const arr = [];
+    const arr:number[] = [];
     for(let i = 0; i<(500 + offset); i++){
       let rand100 = Math.floor(Math.random()*100);
       arr.push(rand100);

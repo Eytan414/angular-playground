@@ -12,7 +12,7 @@
     </div>
 
     <div class="result">
-        @for (number of (randomNumbers$ | async); track number) {
+        @for (number of (randomNumbers$ | async); track $index) {
             <div class="wrapper" [style.backgroundColor]="colorInput.value">
                 <div> {{number}} </div>
             </div>

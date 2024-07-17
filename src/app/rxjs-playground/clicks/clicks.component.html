@@ -1,5 +1,5 @@
-<div class="result" (click)='recordClicks()'>
-    @for (click of (clicks$ | async); track click) {
+<div class="result" #clickSurface>
+    @for (click of (clicks$ | async); track click.index) {
         <div class="click-data" [ngStyle]="{'anchor-name': '--anchor-'+ $index}">
             <div class='index' [ngStyle]="{'position-anchor': '--anchor-'+ $index}">
                 {{ click.index-1 }}

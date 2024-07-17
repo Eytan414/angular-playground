@@ -21,7 +21,7 @@ export class ControllerService {
   }
   
   sendDataArr(arr:number[]) {
-    const url = baseUrl + 'data';
+    const url = baseUrl + 'home/get500array';
     return this.backendService
     .post<number[]>(
         url,
@@ -29,8 +29,9 @@ export class ControllerService {
         'application/json'
       );
   }
+
   submit(formData: any) {
-    const url = baseUrl + 'contactus'; 
+    const url = baseUrl + 'home/contactus'; 
 
     return this.backendService.post(
         url,

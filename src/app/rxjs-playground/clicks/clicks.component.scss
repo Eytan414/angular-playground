@@ -8,6 +8,11 @@
     max-height: 75vh;
     overflow-y: auto;
     user-select: none;
+    border-radius: 1rem;
+
+    &:hover{
+        background: yellow;
+    }
 
     .click-data{
         font-size: 1.5rem;
@@ -17,16 +22,17 @@
         padding: 1.75rem;
         border-radius: 50%;
         width: min-content;
-
+        margin-inline: 1rem;
+        
         .index{
             position: absolute;
             align-self: anchor-center;
             right: anchor(left);
             transform: translateX(.125rem);
             font-size: 0.8rem;
-            color: mediumvioletred;
+            background: lightblue;
+            color: mediumpurple;
             font-weight: bold;
-            background: cyan;
             border-top-left-radius: 1rem;
             border-bottom-left-radius: 1rem;
             padding: 0.175rem;

@@ -1,7 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
-import { PlaygroundService } from '../playground.service';
 import { AsyncPipe } from '@angular/common';
 import { CounterService } from './counter.service';
 
